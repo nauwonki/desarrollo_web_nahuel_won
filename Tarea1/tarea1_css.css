@@ -1,0 +1,28 @@
+.adopcion {
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 120px;
+    gap: 0;
+    align-items: center;
+    border-bottom: 1px solid #ddd; 
+}
+
+.bienvenida {
+    color: blue;
+    margin-bottom: 20px;
+}
+
+.adopcion-titulo {
+    color:black;
+    font-weight: bold;
+    display: grid;
+    grid-template-columns: 100px 1fr 1fr 1fr 120px;
+    gap: 0;
+    align-items: center;
+    border-bottom: 1px solid #ddd; 
+}
+
+.adopcion-tabla {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
