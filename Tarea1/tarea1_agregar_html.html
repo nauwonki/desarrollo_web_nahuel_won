@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Adopción de mascotas </title>
+    </head>
+    <body>
+        <div class="agregar-aviso">
+            <h1>Agregar Nuevo Aviso</h1>
+            <form id="form-aviso">
+                <div class="form-sec">
+                    <h2>Donde</h2>
+                    <div class="form-select">
+                        <div class="form-group">
+                            <label for="region">Región:</label>
+                            <select id="region" name="region" required>
+                                <option value="">Seleccione una región</option>
+                                <option value="metropolitana">Región Metropolitana</option>
+                                <option value="valparaiso">Valparaíso</option>
+                                <option value="biobio">Biobío</option>
+                                <option value="araucania">Araucanía</option>
+                                <option value="loslagos">Los Lagos</option>
+                                <option value="magallanes">Magallanes</option>
+                                <option value="arica">Arica y Parinacota</option>
+                                <option value="atacama">Atacama</option>
+                                <option value="coquimbo">Coquimbo</option>
+                                <option value="ohiggins">O'Higgins</option>
+                                <option value="maule">Maule</option>
+                                <option value="nuble">Ñuble</option>
+                                <option value="losrios">Los Ríos</option>
+                                <option value="aysen">Aysén</option>
+                                <option value="tarapaca">Tarapacá</option>
+                                <option value="antofagasta">Antofagasta</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="comuna">Comuna:</label>
+                            <select id="comuna" name="comuna" required>
+                                <option value="">Seleccione una comuna</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="sector">Sector:</label>
+                        <input type="text" id="sector" name="sector" maxlength="100">
+                    </div>
+                </div>
+
+                <div class="form-sec">
+                    <h3>Contacto de esta publicación</h3>
+                    <div class="form-group">
+                        <label for="nombre">Nombre:</label>
+                        <input type="text" id="nombre" name="nombre" minlength="3" maxlength="200" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="numcel">Número Celular</label>
+                        <input type="tel" id="numcel" name="numcel" pattern="\+[0-9]{3}\.[0-9]{8}">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contactar por</label>
+                        <select id="contact" name="contact" required>
+                            <option value="">Seleccione un método de contacto</option>
+                            <option value="telegram">Telegram</option>
+                            <option value="whatsapp">WhatsApp</option>
+                            <option value="x">X</option>
+                            <option value="insta">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-sec">
+                    <h4>Que mascota ofrece en adopcion</h4>
+                    <div class="form-group">
+                        <label for="tipo">Tipo de mascota:</label>
+                        <select id="tipo" name="tipo" required>
+                            <option value="">Seleccione un tipo de mascota</option>
+                            <option value="perro">Perro</option>
+                            <option value="gato">Gato</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="cantidad">Cantidad:</label>
+                        <input type="number" id="cantidad" name="cantidad" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edad">Edad:</label>
+                        <input type="number" id="edad" name="edad" min="1" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="unidad-edad">Unidad de edad:</label>
+                        <select id="unidad-edad" name="unidad-edad" required>
+                            <option value="">Seleccione una unidad de edad</option>
+                            <option value="meses">Meses</option>
+                            <option value="años">Años</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-entrega">Fecha de entrega:</label>
+                        <input type="datetime-local" id="fecha-entrega" name="fecha-entrega" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="descripcion">Descripción:</label>
+                        <input type="text" id="descripcion" name="descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label>Fotos</label>
+                        <div class="foto">
+                            <input type="file" accept="image/*" required>
+                            <button type="button" class="btn-foto" onclick="addPhotoInput()">Agregar otra Foto</button>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Agregar este aviso de adopción</button>
+            </form>
+        </div>
+    </body>
+
+</html>
