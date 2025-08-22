@@ -59,7 +59,7 @@
                     </div>
                     <div class="form-group">
                         <label for="numcel">Número Celular</label>
-                        <input type="tel" id="numcel" name="numcel" pattern="\+[0-9]{3}\.[0-9]{8}">
+                        <input type="tel" id="numcel" name="numcel" placeholder="+569.12345678" pattern="\+[0-9]{3}\.[0-9]{8}">
                     </div>
                     <div class="form-group">
                         <label for="contact">Contactar por</label>
@@ -116,8 +116,23 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" id="btn-submit">Agregar este aviso de adopción</button>
+                <button type="button" id="btn-submit">Agregar este aviso de adopción</button>
             </form>
+        </div>
+        <div class="confirmar" id="confirmar" style="display: none;">
+            <div class="confirmar-content">
+                <h2>¿Está seguro que desea agregar este aviso de adopción?</h2>
+                <div class="confirmar-buttons">
+                    <button id="btn-confirmar" onclick="confirmEnvio()">Sí, estoy seguro</button>
+                    <button id="btn-cancelar" onclick="close()">No, no estoy seguro, quiero volver al formulario</button>
+                </div>
+            </div>
+        </div>
+        <div class="confirmado" id="confirmado" style="display: none;">
+            <div class="confirmado-content">
+                <h2>¡Hemos recibido la información de adopción, muchas gracias y suerte!</h2>
+                <button id="btn-cerrar" onclick="volverPortada()">Volver a portada</button>
+            </div>
         </div>
         <script src="tarea1_agregar_js.js"></script>
     </body>
