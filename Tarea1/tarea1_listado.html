@@ -9,8 +9,8 @@
         <div class="container">
             <h1>Listado de Adopción de Mascotas</h1>
             <div class="nav-btns">
-                <button type="button" id="volver-portada-btn" onclick="volverPortada()">Volver a la Portada</button>
-                <button type="button" id="agregar-aviso-btn" onclick="volverAgregarAviso()">Agregar Aviso de Adopción</button>
+                <button type="button" id="volver-portada-btn">Volver a la Portada</button>
+                <button type="button" id="agregar-aviso-btn">Agregar Aviso de Adopción</button>
             </div>
             <div class="listados" id="listados">
                 <h2>Listado de Avisos de Adopción</h2>
@@ -27,7 +27,7 @@
                         </tr>
                     </thead>
                     <tbody id="body-tabla">
-                        <tr>
+                        <tr class="click-fila" data-id="1">
                             <td>2025-08-18 12:00</td>
                             <td>2025-08-25</td>
                             <td>Santiago</td>
@@ -36,7 +36,7 @@
                             <td>Juan Pérez</td>
                             <td>3</td>
                         </tr>
-                        <tr>
+                        <tr class="click-fila" data-id="2">
                             <td>2025-08-17 19:00</td>
                             <td>2025-08-24</td>
                             <td>Ñuñoa</td>
@@ -45,7 +45,7 @@
                             <td>María López</td>
                             <td>2</td>
                         </tr>
-                        <tr>
+                        <tr class="click-fila" data-id="3">
                             <td>2025-08-17 18:00</td>
                             <td>2025-08-24</td>
                             <td>Santiago</td>
@@ -54,7 +54,7 @@
                             <td>Carlos Fernández</td>
                             <td>1</td>
                         </tr>
-                        <tr>
+                        <tr class="click-fila" data-id="4">
                             <td>2025-08-16 15:00</td>
                             <td>2025-08-23</td>
                             <td>Providencia</td>
@@ -63,7 +63,7 @@
                             <td>Ana Torres</td>
                             <td>4</td>
                         </tr>
-                        <tr>
+                        <tr class="click-fila" data-id="5">
                             <td>2025-08-15 10:00</td>
                             <td>2025-08-22</td>
                             <td>Recoleta</td>
@@ -74,7 +74,96 @@
                         </tr>
                     </tbody>
                 </table>
-
             </div>
+            <div class="detalle" id="detalle" style="display: none;">
+                <h2>Detalle de Aviso</h2>
+                <div class="detalle-cont">
+                    <div class="detalle-info">
+                        <h3>Fechas</h3>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Fecha Publicación:</span>
+                            <span class="detalle-value" id="detalle-value-publ">2025-08-18 12:00</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Fecha Entrega:</span>
+                            <span class="detalle-value" id="detalle-value-deliv">2025-08-25</span>
+                        </div>
+                    </div>
+                    <div class="detalle-info">
+                        <h3>Ubicación</h3>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Región:</span>
+                            <span class="detalle-value" id="detalle-value-region">Región Metropolitana</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Comuna:</span>
+                            <span class="detalle-value" id="detalle-value-comuna">Santiago</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Sector:</span>
+                            <span class="detalle-value" id="detalle-value-sector">Beauchef 850, terraza</span>
+                        </div>
+                    </div>
+                    <div class="detalle-info">
+                        <h4>Información de Mascota</h4>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Tipo:</span>
+                            <span class="detalle-value" id="detalle-value-tipo">Gato</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Cantidad:</span>
+                            <span class="detalle-value" id="detalle-value-cantidad">1</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Edad:</span>
+                            <span class="detalle-value" id="detalle-value-edad">2 meses</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Descripción:</span>
+                            <span class="detalle-value" id="detalle-value-desc">1 gatito</span>
+                        </div>
+                    </div>
+                    <div class="detalle-info">
+                        <h5>Contacto</h5>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Nombre:</span>
+                            <span class="detalle-value" id="detalle-value-nombre">Juan Pérez</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Email:</span>
+                            <span class="detalle-value" id="detalle-value-email">juanperez@gmail.com</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Celular:</span>
+                            <span class="detalle-value" id="detalle-value-celular">+569.87654321</span>
+                        </div>
+                        <div class="detalle-item">
+                            <span class="detalle-label">Contactar:</span>
+                            <span class="detalle-value" id="detalle-value-contactar">Whatsapp</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="fotos">
+                    <h6>Fotos</h6>
+                    <div class="foto-item">
+                        <img src="https://placekitten.com/200/300" alt="Foto 1" onclick="mostrarFoto(this.src)">
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://placekitten.com/200/301" alt="Foto 2" onclick="mostrarFoto(this.src)">
+                    </div>
+                    <div class="foto-item">
+                        <img src="https://placekitten.com/200/302" alt="Foto 3" onclick="mostrarFoto(this.src)">
+                    </div>
+                </div>
+                <div class="detalle-btn">
+                    <button type="button" id="volver-listado-btn">Volver al Listado</button>
+                    <button type="button" id="volver-portada-detallebtn">Volver a la Portada</button>
+                </div>
         </div>
+        <div class="foto-grande" id="foto-grande">
+            <button class="cerrar-foto-btn" onclick="cerrarFoto()">X</button>
+            <img id="foto-grande-img" src="" alt="Foto Grande">
+        </div>
+        <script src="tarea1_listado.js"></script>
     </body>
+</html>
