@@ -1,4 +1,5 @@
-const validarForm = () => {
+const validarForm = (event) => {
+    event.preventDefault(); 
     let isValid = false;
     let msg = "";
     //validar email
@@ -44,7 +45,7 @@ const validarForm = () => {
     }
     //validar edad
     let edadInput = document.getElementById("edad");
-    if (!edadInput.value || edadInpu.value < 1) {
+    if (!edadInput.value || edadInput.value < 1) {
         msg += "Debe ingresar una edad válida para la mascota.\n";
         edadInput.style.borderColor = "red";
     } else {
@@ -92,10 +93,36 @@ const validarForm = () => {
     }
     
     if (msg === "") {
-        msg = "Formulario enviado correctamente!";
         isValid = true;
     }
-    alert(msg); 
+    if (isValid) {
+        mostrar();
+    } else {
+        alert(msg); 
+    }
+    
 };
+
+const mostrar = () => {
+    document.getElementById("confirmar").style.display = "flex";
+};
+const close = () => {
+    document.getElementById("confirmar").style.display = "none";
+};
+const confirmEnvio = () => {
+    document.getElementById("confirmar").style.display = "none";
+    document.querySelector(".agregar-aviso").style.display = "none";
+    document.getElementById("confirmado").style.display = "flex";
+};
+const volverPortada = () => {
+    window.location.href = "tarea1html.html";
+};
+
 let submitBtn = document.getElementById("btn-submit");
 submitBtn.addEventListener("click", validarForm);
+let confirmarBtn = document.getElementById("btn-confirmar");
+confirmarBtn.addEventListener("click", confirmEnvio);
+let cancelarBtn = document.getElementById("btn-cancelar");
+cancelarBtn.addEventListener("click", close);
+let cerrarBtn = document.getElementById("btn-cerrar");
+cerrarBtn.addEventListener("click", volverPortada);
