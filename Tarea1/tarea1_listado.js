@@ -128,6 +128,35 @@ const mostrarDetalle = (id) => {
     document.getElementById('detalle-value-email').textContent = datos.email;
     document.getElementById('detalle-value-celular').textContent = datos.celular;
     document.getElementById('detalle-value-contactar').textContent = datos.contactar;
+
+    const fotosTable = document.getElementById('foto-table');
+    fotosTable.innerHTML = ''; 
+    datos.fotos.forEach((foto, index) => {
+        const fotoCell = document.createElement('td');
+        fotoCell.className = 'foto-cell';
+        const img = document.createElement('img');
+        img.src = foto;
+        img.alt = `Foto ${index + 1}`;
+        img.onclick = () => {fotoGrande(foto);};
+        fotoCell.appendChild(img);
+        fotosTable.appendChild(fotoCell);
+    });
+};
+
+document.getElementById('foto-grande').addEventListener('click', function(event) {
+    if (event.target === this) {    
+        cerrarFoto();
+    }
+});
+
+const fotoGrande = (src) => {
+    const srcGrande = src.replace("w=320&h=240", "w=800&h=600");
+    document.getElementById('foto-grande-image').src = srcGrande;
+    document.getElementById('foto-grande').style.display = 'block';
+};
+
+const cerrarFoto= () => {
+    document.getElementById('foto-grande').style.display = 'none';
 };
 
 const volverPortada = () => {
@@ -150,3 +179,5 @@ volverListadoBtn.addEventListener("click", volverListado);
 
 let volverPortadaDetalleBtn = document.getElementById('volver-portada-detallebtn');
 volverPortadaDetalleBtn.addEventListener("click", volverPortada);
+
+
