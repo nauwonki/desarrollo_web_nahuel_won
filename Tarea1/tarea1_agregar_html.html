@@ -116,22 +116,22 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" id="btn-submit">Agregar este aviso de adopción</button>
+                <button type="button" id="btn-submit" class="btns">Agregar este aviso de adopción</button>
             </form>
         </div>
         <div class="confirmar" id="confirmar" style="display: none;">
             <div class="confirmar-content">
                 <h2>¿Está seguro que desea agregar este aviso de adopción?</h2>
                 <div class="confirmar-buttons">
-                    <button id="btn-confirmar" onclick="confirmEnvio()">Sí, estoy seguro</button>
-                    <button id="btn-cancelar" onclick="close()">No, no estoy seguro, quiero volver al formulario</button>
+                    <button id="btn-confirmar" onclick="confirmEnvio()" class="btns">Sí, estoy seguro</button>
+                    <button id="btn-cancelar" onclick="close()" class="btns">No, no estoy seguro, quiero volver al formulario</button>
                 </div>
             </div>
         </div>
         <div class="confirmado" id="confirmado" style="display: none;">
             <div class="confirmado-content">
                 <h2>¡Hemos recibido la información de adopción, muchas gracias y suerte!</h2>
-                <button id="btn-cerrar" onclick="volverPortada()">Volver a portada</button>
+                <button id="btn-cerrar" onclick="volverPortada()" class="btns">Volver a portada</button>
             </div>
         </div>
         <script src="tarea1_agregar_js.js"></script>
