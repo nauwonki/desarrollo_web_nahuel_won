@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Estadísticas</title>
+        <link rel="stylesheet" href="tarea1_estadistica.css">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Estadísticas de Adopción</h1>
+            <div class="estadicticas">
+                <div class="graficos">
+                    <h2>Gráfico de líneas</h2>
+                    <p class="descripcion">Cantidad de avisos por día</p>
+                    <div class="grafico-canv">
+                        <canvas id="graficoLineas"></canvas>
+                    </div>
+                </div>
+                <div class="graficos">
+                    <h2>Gráfico de torta</h2>
+                    <p class="descripcion">Avisos por tipo de mascota</p>
+                    <div class="grafico-canv">
+                        <canvas id="graficoTorta"></canvas>
+                    </div>
+                </div>
+                <div class="graficos">
+                    <h2>Gráfico de barras</h2>
+                    <p class="descripcion">Cantidad de adopciones entre Perros y Gatos</p>
+                    <div class="grafico-canv">
+                        <canvas id="graficoBarras"></canvas>
+                    </div>
+                </div>
+            </div>
+            <button type="button" id="volver-portada-btn" class="btns">Volver a la portada</button>
+        </div>
+        <script src="tarea1_estadistica.js"></script>
+    </body>
+</html>
