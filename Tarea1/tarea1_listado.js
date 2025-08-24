@@ -137,7 +137,7 @@ const mostrarDetalle = (id) => {
         const img = document.createElement('img');
         img.src = foto;
         img.alt = `Foto ${index + 1}`;
-        img.onclick = () => {fotoGrande(foto);};
+        img.onclick = () => {mostarFoto(foto);};
         fotoCell.appendChild(img);
         fotosTable.appendChild(fotoCell);
     });
@@ -149,7 +149,7 @@ document.getElementById('foto-grande').addEventListener('click', function(event)
     }
 });
 
-const fotoGrande = (src) => {
+const mostarFoto = (src) => {
     const srcGrande = src.replace("w=320&h=240", "w=800&h=600");
     document.getElementById('foto-grande-image').src = srcGrande;
     document.getElementById('foto-grande').style.display = 'block';
