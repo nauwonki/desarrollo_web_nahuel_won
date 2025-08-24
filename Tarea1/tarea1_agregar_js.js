@@ -126,3 +126,34 @@ let cancelarBtn = document.getElementById("btn-cancelar");
 cancelarBtn.addEventListener("click", close);
 let cerrarBtn = document.getElementById("btn-cerrar");
 cerrarBtn.addEventListener("click", volverPortada);
+
+document.addEventListener("DOMContentLoaded", function() {
+    cargarRegiones();
+});
+
+const cargarRegiones = () => {
+    const regionSelect = document.getElementById("region");
+    region_comuna.regiones.forEach(function(region) {
+        const option = document.createElement("option");
+        option.value = region.numero;
+        option.textContent = region.nombre;
+        regionSelect.appendChild(option);
+    });
+}
+
+document.getElementById("region").addEventListener("change", function() {
+    const regionSeleccionada = this.value;
+    const comunaSelect = document.getElementById("comuna");
+    comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>'; // Limpiar las opciones anteriores
+    if (regionSeleccionada) {
+        const region = region_comuna.regiones.find(reg => reg.numero == regionSeleccionada);
+        if (region){
+            region.comunas.forEach(function(comuna) {
+                const option = document.createElement("option");
+                option.value = comuna.id;
+                option.textContent = comuna.nombre;
+                comunaSelect.appendChild(option);
+            });
+        }
+    }
+});
