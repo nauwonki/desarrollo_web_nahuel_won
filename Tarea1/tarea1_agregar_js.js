@@ -92,6 +92,15 @@ const validarForm = (event) => {
         sectorInput.style.borderColor = "";
     }
     
+    //validar fotos
+    let fotosInput = getFotos();
+    if (!validarFotos(fotosInput)) {
+        msg += "Debe subir entre 1 y 5 archivos de tipo imagen o PDF.\n";
+        document.getElementById("fotos").style.borderColor = "red";
+    } else {
+        document.getElementById("fotos").style.borderColor = "";
+    }   
+
     if (msg === "") {
         isValid = true;
     }
@@ -102,6 +111,17 @@ const validarForm = (event) => {
     }
     
 };
+
+const validarFotos = (fotosInput) => {
+    if (!fotosInput) return false;
+    let lengthValid = 1 <= fotosInput.length && fotosInput.length <= 5;
+    let typeValid = true;
+    for (const file of fotosInput) {
+        let fileFamily = file.type.split("/")[0];
+        typeValid &&= fileFamily == "image" || file.type == "application/pdf";
+    }
+    return lengthValid && typeValid;
+}
 
 const mostrar = () => {
     document.getElementById("confirmar").style.display = "flex";
@@ -144,7 +164,7 @@ const cargarRegiones = () => {
 document.getElementById("region").addEventListener("change", function() {
     const regionSeleccionada = this.value;
     const comunaSelect = document.getElementById("comuna");
-    comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>'; // Limpiar las opciones anteriores
+    comunaSelect.innerHTML = '<option value="">Seleccione una comuna</option>'; 
     if (regionSeleccionada) {
         const region = region_comuna.regiones.find(reg => reg.numero == regionSeleccionada);
         if (region){
@@ -157,3 +177,120 @@ document.getElementById("region").addEventListener("change", function() {
         }
     }
 });
+
+// Código para agregar contactos dinámicamente
+let contactCount = 0;
+let maxContacts = 5;
+
+const agregarContacto = () => {
+    if (contactCount >= maxContacts) return;
+    contactCount++;
+
+    const container = document.getElementById("contacto-container");
+    const contactRow = document.createElement("div");
+    contactRow.className = "contacto-row";
+    contactRow.id = `contacto-row-${contactCount}`;
+
+    contactRow.innerHTML = `
+        <div class="contacto-select">
+            <select id="contacto-tipo-${contactCount}" onchange="showInput(${contactCount})">
+                <option value="">Seleccione tipo de contacto</option>
+                <option value="whatsapp">whatsApp</option>
+                <option value="telegram">Telegram</option>
+                <option value="x">X</option>
+                <option value="instagram">Instagram</option>
+                <option value="tiktok">TikTok</option>
+                <option value="otro">Otro</option>
+            </select>
+        </div>
+        <div class="contacto-input"></div>
+        <input
+            type="text"
+            id="contacto-info-${contactCount}"
+            placeholder="Seleccione un tipo de contacto"
+            minlength="4"
+            maxlength="50"
+            disabled
+            style="display:none;"
+        >
+        </div>
+        <button type="button" class="btn-eliminar" onclick="eliminarContacto(${contactCount})">Eliminar</button>
+    `;
+    container.appendChild(contactRow);
+}
+
+const showInput = (id) => {
+    const tipoSelect = document.getElementById(`contacto-tipo-${id}`);
+    const infoInput = document.getElementById(`contacto-info-${id}`);
+
+    if (tipoSelect.value) {
+        infoInput.style.display = "block";
+        infoInput.disabled = false;
+        
+        const placeholderMap = {
+            'whatsapp': '+569.12345678',
+            'telegram': '@usuario',
+            'x': '@usuario',
+            'instagram': '@usuario',
+            'tiktok': '@usuario',
+            'otro': 'Ingrese el contacto'
+        };
+
+        infoInput.placeholder = placeholderMap[tipoSelect.value];
+        infoInput.focus();
+    } else {
+        infoInput.style.display = "none";
+        infoInput.disabled = true;
+        infoInput.value = "";
+    }
+};
+
+const eliminarContacto = (id) => {
+    const row = document.getElementById(`contacto-row-${id}`);
+    if (row) {
+        row.remove();
+        contactCount--;
+    }
+};
+
+// Código para agregar fotos
+let photoCount = 1;
+const maxPhotos = 5;
+
+const agregarFoto = () => {
+    if (photoCount >= maxPhotos) return;
+    photoCount++;
+    const container = document.getElementById("foto-container");
+
+    const photoRow = document.createElement("div");
+    photoRow.className = "foto-row";
+    photoRow.id = `foto-row-${photoCount}`;
+
+    photoRow.innerHTML = `
+        <div class="foto-input">
+            <input type="file" id="foto-${photoCount}" accept="image/*,application/pdf">
+        </div>
+        <button type="button" class="btn-eliminar" onclick="eliminarFoto(${photoCount})">Eliminar</button>
+    `;
+    container.appendChild(photoRow);
+};
+
+const eliminarFoto = (id) => {
+    if (id === 1) return; 
+    const row = document.getElementById(`foto-row-${id}`);
+    if (row) {
+        row.remove();
+        photoCount--;
+    }
+};
+
+const getFotos = () => {
+    const fotos = [];
+    for (let i = 1; i <= photoCount; i++) {
+        const fotoInput = document.getElementById(`foto-${i}`);
+        if (fotoInput && fotoInput.files[0] && fotoInput.files) {
+            fotos.push(fotoInput.files[0]);
+        }
+    }
+    return fotos;
+};
