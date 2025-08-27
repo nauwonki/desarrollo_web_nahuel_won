@@ -14,9 +14,9 @@ const detalle = {
         celular: "+569.87654321",
         contactar: "WhatsApp",
         fotos: [
-            "https://placekitten.com/200/300",
-            "https://placekitten.com/200/301",
-            "https://placekitten.com/200/302"
+            "https://www.operationkindness.org/wp-content/uploads/blog-kitten-nursery-operation-kindness.jpg",
+            "https://www.diamondpet.com/wp-content/uploads/2021/03/kitten-sitting-on-floor-031621.jpg",
+            "https://d2zp5xs5cp8zlg.cloudfront.net/image-86754-800.jpg"
         ]
     },
     2: {
@@ -98,6 +98,13 @@ const detalle = {
     }
 };
 
+document.addEventListener('DOMContentLoaded', function() {
+    const fotoGrande = document.getElementById('foto-grande');
+    if (fotoGrande) {
+        fotoGrande.style.display = 'none';
+    }
+});
+
 const clickFilas = document.querySelectorAll('.click-fila');
 clickFilas.forEach(fila => {
     fila.addEventListener('click', function() {
@@ -113,6 +120,7 @@ const mostrarDetalle = (id) => {
         alert("No se encontraron detalles para este ID.");
         return;
     }
+    document.getElementById('foto-grande').style.display = 'none';
     document.getElementById('listados').style.display = 'none';
     document.getElementById('detalle').style.display = 'block';
     document.getElementById('detalle-value-publ').textContent = datos.fechaPublicacion;
@@ -129,18 +137,91 @@ const mostrarDetalle = (id) => {
     document.getElementById('detalle-value-celular').textContent = datos.celular;
     document.getElementById('detalle-value-contactar').textContent = datos.contactar;
 
-    const fotosTable = document.getElementById('foto-table');
-    fotosTable.innerHTML = ''; 
-    datos.fotos.forEach((foto, index) => {
-        const fotoCell = document.createElement('td');
-        fotoCell.className = 'foto-cell';
+    cargarFotos(datos.fotos);
+};
+
+let fotoActual = 0;
+let fotosActual = [];
+
+const cargarFotos = (fotos) => {
+    fotosActual = fotos;
+    const fotoTable = document.getElementById('foto-table');
+    fotoTable.innerHTML = '';
+
+    fotos.forEach((foto, index) => {
+        const item = document.createElement('div');
+        item.className = 'foto-thumb';
+        item.style.display = 'inline-block';
+        item.style.margin = '5px';
+
         const img = document.createElement('img');
         img.src = foto;
         img.alt = `Foto ${index + 1}`;
-        img.onclick = () => {mostarFoto(foto);};
-        fotoCell.appendChild(img);
-        fotosTable.appendChild(fotoCell);
+        img.style.cursor = 'pointer';
+        img.style.width = '320px';
+        img.style.height = '240px';
+        img.style.objectFit = 'cover';
+        img.style.margin = '5px';
+
+        img.addEventListener('click', () => {
+            fotoActual = index;
+            mostarFoto(foto);
+        });
+        item.appendChild(img);
+        fotoTable.appendChild(item);
     });
+    const btnContainer = document.createElement('div');
+    btnContainer.style.marginTop = '10px';
+    btnContainer.style.textAlign = 'center';
+    btnContainer.style.width = '100%';
+
+    const btnVerFoto = document.createElement('button');
+    btnVerFoto.textContent = 'Ver Foto';
+    btnVerFoto.className = 'btn-ver-foto';
+    btnVerFoto.style.marginTop = '10px';
+    btnVerFoto.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (fotosActual && fotosActual.length > 0) {
+            fotoActual = 0;
+            mostarFoto(fotosActual[0]);
+        }
+    });
+    btnContainer.appendChild(btnVerFoto);
+    fotoTable.appendChild(btnContainer);
+};
+
+const mostarFoto = (src) => {
+    let srcGrande = src;
+    srcGrande = src.replace('320/240', '800/600')
+                    .replace('320/241', '800/601')
+                    .replace('320/242', '800/602')
+                    .replace('320/243', '800/603')
+                    .replace('320/244', '800/604')
+                    .replace('320/245', '800/605')
+                    .replace('320/246', '800/606')
+                    .replace('320/247', '800/607')
+                    .replace('320/248', '800/608');
+
+    const fotoGrandeImg = document.getElementById('foto-grande-img');
+    const fotoGrandeModal = document.getElementById('foto-grande');
+
+    if (fotoGrandeImg && fotoGrandeModal) {
+        fotoGrandeImg.src = srcGrande;
+        fotoGrandeModal.style.display = 'flex';
+        fotoGrandeModal.style.justifyContent = 'center';
+        fotoGrandeModal.style.alignItems = 'center';
+        fotoGrandeModal.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        fotoGrandeModal.style.width = '100%';
+        fotoGrandeModal.style.height = '100%';
+        fotoGrandeModal.style.position = 'fixed';
+        fotoGrandeModal.style.top = '0';
+        fotoGrandeModal.style.left = '0';
+    }
+};
+
+const cerrarFoto= () => {
+    document.getElementById('foto-grande').style.display = 'none';
 };
 
 document.getElementById('foto-grande').addEventListener('click', function(event) {
@@ -148,16 +229,6 @@ document.getElementById('foto-grande').addEventListener('click', function(event)
         cerrarFoto();
     }
 });
-
-const mostarFoto = (src) => {
-    const srcGrande = src.replace("w=320&h=240", "w=800&h=600");
-    document.getElementById('foto-grande-image').src = srcGrande;
-    document.getElementById('foto-grande').style.display = 'block';
-};
-
-const cerrarFoto= () => {
-    document.getElementById('foto-grande').style.display = 'none';
-};
 
 const volverPortada = () => {
     window.location.href = 'tarea1html.html';
@@ -179,5 +250,6 @@ volverListadoBtn.addEventListener("click", volverListado);
 
 let volverPortadaDetalleBtn = document.getElementById('volver-portada-detallebtn');
 volverPortadaDetalleBtn.addEventListener("click", volverPortada);
+
 
 
