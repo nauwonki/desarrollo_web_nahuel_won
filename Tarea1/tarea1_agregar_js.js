@@ -95,11 +95,14 @@ const validarForm = (event) => {
     //validar fotos
     let fotosInput = getFotos();
     if (!validarFotos(fotosInput)) {
-        msg += "Debe subir entre 1 y 5 archivos de tipo imagen o PDF.\n";
-        document.getElementById("fotos").style.borderColor = "red";
+        msg += "Debe subir entre 1 y 5 archivos de tipo imagen.\n";
+        document.getElementById("foto-container").style.borderColor = "red";
     } else {
-        document.getElementById("fotos").style.borderColor = "";
-    }   
+        document.getElementById("foto-container").style.borderColor = "";
+    }
+    //validar contactos
+    const contactoContainer = document.getElementById("contacto-container");
+
 
     if (msg === "") {
         isValid = true;
@@ -138,17 +141,18 @@ const volverPortada = () => {
     window.location.href = "tarea1html.html";
 };
 
-let submitBtn = document.getElementById("btn-submit");
-submitBtn.addEventListener("click", validarForm);
-let confirmarBtn = document.getElementById("btn-confirmar");
-confirmarBtn.addEventListener("click", confirmEnvio);
-let cancelarBtn = document.getElementById("btn-cancelar");
-cancelarBtn.addEventListener("click", close);
-let cerrarBtn = document.getElementById("btn-cerrar");
-cerrarBtn.addEventListener("click", volverPortada);
-
 document.addEventListener("DOMContentLoaded", function() {
     cargarRegiones();
+
+    let submitBtn = document.getElementById("btn-submit");
+    submitBtn.addEventListener("click", validarForm);
+    let confirmarBtn = document.getElementById("btn-confirmar");
+    confirmarBtn.addEventListener("click", confirmEnvio);
+    let cancelarBtn = document.getElementById("btn-cancelar");
+    cancelarBtn.addEventListener("click", close);
+    let cerrarBtn = document.getElementById("btn-cerrar");
+    cerrarBtn.addEventListener("click", volverPortada);
+
 });
 
 const cargarRegiones = () => {
@@ -288,7 +292,7 @@ const getFotos = () => {
     const fotos = [];
     for (let i = 1; i <= photoCount; i++) {
         const fotoInput = document.getElementById(`foto-${i}`);
-        if (fotoInput && fotoInput.files[0] && fotoInput.files) {
+        if (fotoInput && fotoInput.files && fotoInput.files[0]) {
             fotos.push(fotoInput.files[0]);
         }
     }
