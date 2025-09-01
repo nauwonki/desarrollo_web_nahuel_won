@@ -54,3 +54,7 @@
 .btns:focus {
   background-color: #F082AC;
 }
+
+.click-fila {
+    cursor: pointer;
+}

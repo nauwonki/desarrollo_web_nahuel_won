@@ -117,7 +117,7 @@ const validarForm = (event) => {
 
 const validarFotos = (fotosInput) => {
     if (!fotosInput) return false;
-    let lengthValid = 1 <= fotosInput.length && fotosInput.length <= 5;
+    let lengthValid = 1 >= fotosInput.length && fotosInput.length <= 5;
     let typeValid = true;
     for (const file of fotosInput) {
         let fileFamily = file.type.split("/")[0];

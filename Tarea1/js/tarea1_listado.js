@@ -34,8 +34,8 @@ const detalle = {
         celular: "+569.12345678",
         contactar: "Instagram",
         fotos: [
-            "https://placekitten.com/200/303",
-            "https://placekitten.com/200/304",
+            "https://www.kimballstock.com/pix/ani/p/08/pup-08-gr0077-01p.jpg",
+            "https://img.freepik.com/free-photo/beautiful-shot-three-golden-retriever-puppies-resting-snow-with-blurred-background_181624-16988.jpg",
         ]
     },
     3: {
@@ -53,7 +53,7 @@ const detalle = {
         celular: "+569.13245678",
         contactar: "Telegram",
         fotos: [
-            "https://placekitten.com/200/305",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLIiyvA3h93XgrI-C8Af3sa2VQ7itz7WRT2Q&s",
         ]
     },
     4: {
@@ -71,10 +71,10 @@ const detalle = {
         celular: "+569.65432123",
         contactar: "WhatsApp",
         fotos: [
-            "https://placekitten.com/200/306",
-            "https://placekitten.com/200/307",
-            "https://placekitten.com/200/308",
-            "https://placekitten.com/200/309"
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6oEkxOUYgRxGEUJIYE4du308H7UeuDQD3tg&s",
+            "https://www.zooplus.co.uk/magazine/wp-content/uploads/2025/02/Shiba-Inu-Welpe-1-1024x655-1.webp",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTjLBwmb9YMibkc7AFsXmvpixVEv_l_nHEsiA&s",
+            "https://i.pinimg.com/564x/f5/80/8e/f5808e68304fb8b44c8b6ed95d589e2c.jpg"
         ]
     },
     5: {
@@ -92,8 +92,8 @@ const detalle = {
         celular: "+569.98765432",
         contactar: "Instagram",
         fotos: [
-            "https://placekitten.com/200/310",
-            "https://placekitten.com/200/311"
+            "https://preview.redd.it/x0kgwcw49vt91.jpg?width=640&crop=smart&auto=webp&s=a61cd0b473d451a651e96c2b549e92fffe44c33e",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIq6xepz3UhdKZcTNcn-XBXRFVYNEHhHdfDQ&s"
         ]
     }
 };
